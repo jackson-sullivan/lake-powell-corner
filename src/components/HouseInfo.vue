@@ -47,9 +47,13 @@ const remainingImages = computed(() => gallery.value.filter((img) => img !== cur
 
         <p class="text-lg font-semibold text-slate-900">
           {{ props.stats[0]?.value }} bed · {{ props.stats[1]?.value }} bath ·
-          {{ props.stats[2]?.value }} ·
-          {{ props.stats[4]?.value }}
+          {{ props.stats[2]?.value }}
         </p>
+
+        <div class="space-y-1">
+          <p class="text-lg font-semibold text-slate-900">{{ props.stats[4]?.value }}</p>
+          <p class="text-sm text-slate-600">Includes utilities and internet</p>
+        </div>
 
         <div class="space-y-1 text-sm">
           <div class="font-semibold text-slate-900">Month-to-Month or Extended</div>

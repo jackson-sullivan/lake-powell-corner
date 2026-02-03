@@ -47,7 +47,7 @@ const house = {
 </script>
 
 <template>
-  <article class="space-y-8 mt-10">
+  <article class="space-y-8 mt-4">
     <HouseInfo
       :name="house.name"
       :location="house.location"

@@ -26,7 +26,7 @@ const isHome = computed(() => route.path === '/')
         :class="
           isHome
             ? 'px-2 mt-1 ml-2 text-sm font-semibold transition hover:-translate-y-0.5 md:text-base text-white hover:text-white/85'
-            : 'px-2 mt-1 ml-2 text-lg font-semibold transition hover:-translate-y-0.5 md:text-xl text-[var(--color-accent,#c16545)] hover:text-[var(--color-accent,#a14f34)]'
+            : 'px-2 mt-1 ml-2 text-xl font-semibold transition hover:-translate-y-0.5 md:text-2xl text-[var(--color-accent,#c16545)] hover:text-[var(--color-accent,#a14f34)]'
         "
         style="font-family: 'Helvetica', 'Arial', sans-serif"
       >
