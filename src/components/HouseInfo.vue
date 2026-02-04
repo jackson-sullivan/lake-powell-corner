@@ -20,11 +20,7 @@ const props = defineProps<Props>()
 
 const gallery = computed(() => (props.images?.length ? props.images : [props.image]))
 
-const heroIndex = computed(() => gallery.value.findIndex((img) => img.includes('grandy-10')))
-const currentImage = computed(() => {
-  const idx = heroIndex.value >= 0 ? heroIndex.value : 0
-  return gallery.value[idx] ?? gallery.value[0]
-})
+const currentImage = computed(() => props.image ?? gallery.value[0])
 
 const remainingImages = computed(() => gallery.value.filter((img) => img !== currentImage.value))
 </script>
@@ -42,7 +38,7 @@ const remainingImages = computed(() => gallery.value.filter((img) => img !== cur
 
     <div class="space-y-6">
       <div class="space-y-3">
-        <h1 class="text-3xl font-semibold text-slate-900">"Grandy"</h1>
+        <h1 class="text-3xl font-semibold text-slate-900">{{ props.name }}</h1>
         <p v-if="props.location" class="text-sm text-slate-600">{{ props.location }}</p>
 
         <p class="text-lg font-semibold text-slate-900">
@@ -57,7 +53,6 @@ const remainingImages = computed(() => gallery.value.filter((img) => img !== cur
 
         <div class="space-y-1 text-sm">
           <div class="font-semibold text-slate-900">Month-to-Month or Extended</div>
-          <div class="font-semibold text-slate-900">3 Car Parking</div>
         </div>
       </div>
 
@@ -78,99 +73,37 @@ const remainingImages = computed(() => gallery.value.filter((img) => img !== cur
 
   <div v-if="remainingImages.length" class="mt-8 space-y-4">
     <div class="mx-auto max-w-4xl space-y-6">
-      <!-- Living Room Section -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-slate-900">Living Room</h2>
-        <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1 pb-3">
-          <li>Spacious open-concept living area</li>
-          <li>Comfortable seating and natural light</li>
-          <li>Smart TV and high-speed Wi‑Fi included</li>
-        </ul>
-        <div class="grid gap-4 sm:grid-cols-2">
-          <img
-            src="/images/grandy/grandy-02.png"
-            alt="Living Room 1"
-            class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
-            loading="lazy"
-          />
-          <img
-            src="/images/grandy/grandy-01.png"
-            alt="Living Room 2"
-            class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
-            loading="lazy"
-          />
-        </div>
-      </section>
-
-      <!-- Kitchen and Dining Section -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-slate-900">Kitchen and Dining</h2>
-        <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1 pb-3">
-          <li>Fully equipped kitchen with modern appliances</li>
-          <li>Dining area with seating for four</li>
-          <li>Microwave, oven, and walk-in pantry included</li>
-        </ul>
-        <div class="grid gap-4 sm:grid-cols-2">
-          <img
-            src="/images/grandy/grandy-03.png"
-            alt="Kitchen and Dining 1"
-            class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
-            loading="lazy"
-          />
-          <img
-            src="/images/grandy/grandy-04.png"
-            alt="Kitchen and Dining 2"
-            class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
-            loading="lazy"
-          />
-        </div>
-      </section>
-
       <!-- Bedrooms Section -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-slate-900">Bedrooms</h2>
+        <h2 class="text-xl font-semibold text-slate-900">Bedroom</h2>
         <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1 pb-3">
-          <li>Three comfortable bedrooms with ample storage</li>
-          <li>Primary bedroom features a walk-in shower and double vanity</li>
-          <li>Beds included</li>
+          <li>Single bedroom with comfortable bed</li>
+          <li>Dedicated closet and storage</li>
+          <li>Private bath with walk-in shower</li>
         </ul>
         <div class="grid gap-4 sm:grid-cols-2">
           <img
-            src="/images/grandy/grandy-12.png"
+            src="/images/grandy/grandy-11.png"
             alt="Bedroom 1"
             class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
             loading="lazy"
           />
           <img
-            src="/images/grandy/grandy-11.png"
+            src="/images/grandy/grandy-12.png"
             alt="Bedroom 2"
             class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
             loading="lazy"
           />
-          <img
-            src="/images/grandy/grandy-16.png"
-            alt="Bedroom 3"
-            class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
-            loading="lazy"
-          />
-          <div class="aspect-[4/3] overflow-hidden rounded-xl shadow-sm ring-1 ring-slate-200">
-            <img
-              src="/images/grandy/grandy-05.png"
-              alt="Bedroom 4"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
         </div>
       </section>
 
       <!-- Bathrooms Section -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-slate-900">Bathrooms</h2>
+        <h2 class="text-xl font-semibold text-slate-900">Bathroom</h2>
         <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
-          <li>Primary bathroom with walk-in shower and double vanity</li>
-          <li>Second bathroom includes a bathtub</li>
-          <li>Modern fixtures and clean finishes</li>
+          <li>Bathroom with walk-in shower and vanity</li>
+          <li>Fresh fixtures, clean finishes</li>
+          <li>Well-lit and ventilated</li>
         </ul>
         <div class="space-y-4">
           <div class="rounded-xl shadow-sm ring-1 ring-slate-200">
@@ -192,14 +125,6 @@ const remainingImages = computed(() => gallery.value.filter((img) => img !== cur
               src="/images/grandy/grandy-14.png"
               alt="Bathroom 3"
               class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
-              loading="lazy"
-            />
-          </div>
-          <div class="flex justify-center">
-            <img
-              src="/images/grandy/grandy-06.png"
-              alt="Bathroom 4"
-              class="w-full max-w-md rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
               loading="lazy"
             />
           </div>

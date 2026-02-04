@@ -7,6 +7,13 @@ const houses = [
     image: '/images/grandy/grandy-10.png',
     to: '/grandy',
   },
+  {
+    id: 'grandy-suite',
+    name: 'Grandy Suite',
+    summary: '1 bed · 1 bath · Walk-in shower',
+    image: '/images/grandy/grandy-12.png',
+    to: '/grandy-suite',
+  },
 ]
 </script>
 
