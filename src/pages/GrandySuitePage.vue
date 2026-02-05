@@ -47,6 +47,8 @@ const house = {
       :images="house.images"
       :stats="house.stats"
       :features="house.features"
+      :show-living-room="false"
+      :show-kitchen="false"
     />
 
     <section class="px-1 sm:px-0">

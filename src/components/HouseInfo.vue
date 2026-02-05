@@ -14,9 +14,14 @@ type Props = {
   images?: string[]
   stats: Stat[]
   features?: string[]
+  showLivingRoom?: boolean
+  showKitchen?: boolean
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  showLivingRoom: true,
+  showKitchen: true,
+})
 
 const gallery = computed(() => (props.images?.length ? props.images : [props.image]))
 
@@ -73,6 +78,54 @@ const remainingImages = computed(() => gallery.value.filter((img) => img !== cur
 
   <div v-if="remainingImages.length" class="mt-8 space-y-4">
     <div class="mx-auto max-w-4xl space-y-6">
+      <!-- Living Room Section -->
+      <section v-if="props.showLivingRoom" class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Living Room</h2>
+        <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1 pb-3">
+          <li>Spacious open-concept living area</li>
+          <li>Comfortable seating and natural light</li>
+          <li>Smart TV and high-speed Wi‑Fi included</li>
+        </ul>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <img
+            src="/images/grandy/grandy-02.png"
+            alt="Living Room 1"
+            class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
+            loading="lazy"
+          />
+          <img
+            src="/images/grandy/grandy-01.png"
+            alt="Living Room 2"
+            class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <!-- Kitchen and Dining Section -->
+      <section v-if="props.showKitchen" class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Kitchen and Dining</h2>
+        <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1 pb-3">
+          <li>Fully equipped kitchen with modern appliances</li>
+          <li>Dining area with seating for four</li>
+          <li>Microwave, oven, and walk-in pantry included</li>
+        </ul>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <img
+            src="/images/grandy/grandy-03.png"
+            alt="Kitchen and Dining 1"
+            class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
+            loading="lazy"
+          />
+          <img
+            src="/images/grandy/grandy-04.png"
+            alt="Kitchen and Dining 2"
+            class="w-full rounded-xl object-cover shadow-sm ring-1 ring-slate-200"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
       <!-- Bedrooms Section -->
       <section class="space-y-4">
         <h2 class="text-xl font-semibold text-slate-900">Bedroom</h2>
